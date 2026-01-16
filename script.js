@@ -36,3 +36,34 @@ function handleClick(e) {
 
     checkWinner();
 }
+
+function checkWinner() {
+    let winnerFound = false;
+
+    for(let p of winningPatterns){
+        const [a, b, c] = p;
+
+        if(board[a] && board[a] === board[b] && board[a] === board[c])
+        {
+            winnerFound = true;
+            break;
+        }
+    }
+
+    if(winnerFound)
+    {
+        // status.textContent = `Player ${cur} wins!!`;
+        alert(`Player ${cur} wins!!`);
+        gameActive = false;
+    }
+    else if(!board.includes(""))
+    {
+        // status.textContent = "It's a Draw!";
+        alert("It's a draw!!");
+        gameActive = false;
+    }
+    else{
+        switchPlayer();
+    }
+}
+
