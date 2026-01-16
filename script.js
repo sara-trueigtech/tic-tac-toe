@@ -1,10 +1,10 @@
-const cells = document.querySelectorall(".cell");
+const cells = document.querySelectorAll(".cell");
 const status = document.getElementById("status");
 
 let cur = "X";
 let gameActive = true;
 
-let vorad = ["", "", "", "", "", "", "", "", ""];
+let board = ["", "", "", "", "", "", "", "", ""];
 
 const winningPatterns = [
     [0, 1, 2],
@@ -20,3 +20,19 @@ const winningPatterns = [
 cells.forEach(cell => {
     cell.addEventListener("click", handleClick);    
 });
+
+function handleClick(e) {
+    const cell = e.target;
+    const i = cell.getAttribute("data-index");
+
+    if(board[i] !== "" || !gameActive)
+    {
+        alert("Invalid move. Please choose another cell.");
+        return;
+    }
+
+    board[i] = cur;
+    cell.textContent = cur;
+
+    checkWinner();
+}
