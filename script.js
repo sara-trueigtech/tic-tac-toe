@@ -53,14 +53,22 @@ function checkWinner() {
     if(winnerFound)
     {
         // status.textContent = `Player ${cur} wins!!`;
-        alert(`Player ${cur} wins!!`);
+        // alert(`Player ${cur} wins!!`);
         gameActive = false;
+        setTimeout(() => {
+            alert(`Player ${cur} wins!!`);
+            resetGame();
+        },  500);
     }
     else if(!board.includes(""))
     {
         // status.textContent = "It's a Draw!";
-        alert("It's a draw!!");
+        // alert("It's a draw!!");
         gameActive = false;
+        setTimeout(() => {
+            alert("It's a draw!!");
+            resetGame();
+        },  500);
     }
     else{
         switchPlayer();
@@ -70,4 +78,15 @@ function checkWinner() {
 function switchPlayer(){
     cur = cur === "X" ? "O" : "X";
     status.textContent = `Player ${cur}'s turn ;`
+}
+
+function resetGame(){
+    board = ["", "", "", "", "", "", "", "", ""];
+    gameActive = true;
+    cur = "X";
+    status.textContent = "Player X's turrn";
+
+    cells.forEach(cell => {
+        cell.textContent = ""
+    });
 }
