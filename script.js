@@ -67,3 +67,7 @@ function checkWinner() {
     }
 }
 
+function switchPlayer(){
+    cur = cur === "X" ? "O" : "X";
+    status.textContent = `Player ${cur}'s turn ;`
+}
