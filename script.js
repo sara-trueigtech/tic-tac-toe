@@ -1,5 +1,6 @@
 const cells = document.querySelectorAll(".cell");
 const status = document.getElementById("status");
+const resetBtn = document.querySelector(".resetBtn");
 
 let cur = "X";
 let gameActive = true;
@@ -90,3 +91,7 @@ function resetGame(){
         cell.textContent = ""
     });
 }
+
+resetBtn.addEventListener("click", () => {
+    resetGame();
+});
